@@ -1,0 +1,158 @@
+/* Genel Ayarlar */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f8f8f8; /* Hafif bir arka plan rengi */
+}
+
+/* Navbar Stilleri */
+.navbar {
+  background-color: #f0f0f0; /* Koyu gri */
+  color: black;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.navbar .menu a {
+  color: black; /* Siyah renk */
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar .menu a:hover {
+  color: #f0c14b; /* Altın sarısı gibi bir vurgu rengi */
+}
+
+/* Ürün Listesi Stilleri */
+.urun-listesi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 2rem; /* Ürünler arası boşluk */
+  padding: 2rem;
+  max-width: 1200px; /* Maksimum genişlik */
+  margin: 2rem auto; /* Ortalamak için */
+}
+
+/* Ürün Kartı Stilleri */
+.urun {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.urun:hover {
+  transform: translateY(-5px); /* Hafif yukarı kalkma efekti */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.urun a {
+  text-decoration: none; /* Link alt çizgisini kaldır */
+  color: inherit; /* Yazı rengini ebeveynden al */
+  display: block; /* Tam kartı tıklanabilir yap */
+  padding-bottom: 1rem; /* Alttan boşluk */
+}
+
+.urun img {
+  width: 100%;
+  height: 200px; /* Resim yüksekliği sabitle */
+  object-fit: cover; /* Resmi kutuya sığdır */
+  border-bottom: 1px solid #eee;
+}
+
+.urun h2 {
+  font-size: 1.2rem;
+  margin: 1rem 0.5rem 0.5rem;
+  color: #333; /* Başlık rengi */
+}
+
+.urun .fiyat {
+  font-size: 1.3rem;
+  color: #e44d26; /* Belirgin bir fiyat rengi */
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.urun .fiyat s {
+  color: #888; /* Eski fiyat rengi */
+  margin-right: 0.5rem;
+}
+
+/* Footer Stilleri */
+.footer {
+  background-color: #f0f0f0; /* Koyu gri */
+  color: black;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Küçük ekranlarda alta geçiş */
+  margin-top: 2rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 180px; /* Her bölüm için minimum genişlik */
+  margin: 1rem;
+}
+
+.footer-section label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  display: block;
+  color: #f0c14b; /* Altın sarısı */
+}
+
+.footer-section p,
+.footer-section a {
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.footer-section a:hover {
+  color: white;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 2rem 0;
+}
+
+/* Küçük ekranlar için responsive ayarlar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  .navbar .menu {
+    margin-top: 1rem;
+  }
+  .navbar .menu a {
+    margin: 0 0.5rem;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+}
