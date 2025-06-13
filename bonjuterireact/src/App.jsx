@@ -11,6 +11,11 @@ function Navbar() {
         <a href="#">Hakkımızda</a>
         <a href="#">İletişim</a>
       </nav>
+      <form className="login-form">
+        <input type="email" placeholder="E-posta" required />
+        <input type="password" placeholder="Şifre" required />
+        <button type="submit">Giriş</button>
+      </form>
     </header>
   );
 }

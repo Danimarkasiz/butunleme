@@ -252,3 +252,33 @@ hr {
 .contact-form button:hover {
   background-color: #555;
 }
+/* Navbar içindeki giriş formu */
+.login-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.login-form button {
+  padding: 6px 14px;
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-form button:hover {
+  background-color: #e0b03f;
+}
