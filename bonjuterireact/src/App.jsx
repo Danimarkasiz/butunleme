@@ -32,22 +32,22 @@ function Urun({ image, title, fiyat }) {
 function UrunListesi() {
   const urunler = [
     {
-      image: "/resimler/kuyumcu1.webp",
+      image: "/images/kuyumcu1.webp",
       title: "14 Ayar Altın Kaplama Gökyüzü Kolye",
       fiyat: "499.99 TL",
     },
     {
-      image: "/resimler/kuyumcu2.webp",
+      image: "/images/kuyumcu2.webp",
       title: "14 Ayar Altın Kaplama İtalyan İnci Kalp Kolye",
       fiyat: "499.99 TL",
     },
     {
-      image: "/resimler/kuyumcu3.webp",
+      image: "/images/kuyumcu3.webp",
       title: "14 Ayar Altın Kaplama 100 Dilde Seni seviyorum Kolye",
       fiyat: "499.99 TL",
     },
     {
-      image: "/resimler/kuyumcu3.webp",
+      image: "/images/kuyumcu3.webp",
       title: "14 Ayar Altın Kaplama 100 Dilde Seni seviyorum Kolye",
       fiyat: "499.99 TL",
     },
