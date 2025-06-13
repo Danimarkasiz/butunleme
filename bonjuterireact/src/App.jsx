@@ -1,11 +1,12 @@
 import React from "react";
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-import "./index.css";
+import { Routes, Route, Link } from 'react-router-dom';
+import Contact from './Contact.jsx';
+import AboutUs from './AboutUs.jsx';
+import Products from './Products.jsx'; // Products bileşenini içe aktardık
 import { useState } from "react";
+// import './App.css'; // Eğer App.css dosyanız varsa bunu ekleyebilirsiniz
 
-
+// Navbar Bileşeni
 function Navbar() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +18,6 @@ function Navbar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basit şifre kontrolü
     if (password === "mustafa1234") {
       setShowEmail(true);
       setLoginMessage("");
@@ -31,10 +31,10 @@ function Navbar() {
     <header className="navbar p-4 flex flex-col items-center gap-2 md:flex-row md:justify-between">
       <h1 className="logo text-2xl font-bold">Bonjuteri</h1>
       <nav className="menu flex gap-4">
-        <a href="#">Anasayfa</a>
-        <a href="#">Tüm Ürünler</a>
-        <a href="#">Hakkımızda</a>
-        <a href="#">İletişim</a>
+        <Link to="/">Anasayfa</Link>
+        <Link to="/urunler">Tüm Ürünler</Link> {/* Tüm Ürünler linki */}
+        <Link to="/hakkimizda">Hakkımızda</Link>
+        <Link to="/iletisim">İletişim</Link>
       </nav>
 
       {/* Login Form */}
@@ -81,10 +81,12 @@ function Navbar() {
   );
 }
 
+// Urun Bileşeni: Tek bir ürün kartını temsil eder (App.jsx'te de tanımlı olmalı, Products.jsx ile aynı)
 function Urun({ image, title, fiyat }) {
   return (
     <div className="urun border p-4 rounded-lg shadow-md text-center">
-      <a href="#">
+      {/* Link'i burada da kullanıyoruz */}
+      <Link to={`/urunler/${title.replace(/\s+/g, '-')}`}>
         <img src={image} alt={title} className="mx-auto h-40 object-contain" />
         <h2 className="text-lg font-semibold mt-2" style={{ color: "black" }}>
           {title}
@@ -92,35 +94,13 @@ function Urun({ image, title, fiyat }) {
         <p className="fiyat text-sm text-gray-600">
           <s>649.99TL</s> <span className="text-red-500 font-bold">{fiyat}</span>
         </p>
-      </a>
+      </Link>
     </div>
   );
 }
 
-function UrunListesi() {
-  const urunler = [
-    {
-      image: "/images/kuyumcu1.webp",
-      title: "14 Ayar Altın Kaplama Gökyüzü Kolye",
-      fiyat: "499.99 TL",
-    },
-    {
-      image: "/images/kuyumcu2.webp",
-      title: "14 Ayar Altın Kaplama İtalyan İnci Kalp Kolye",
-      fiyat: "499.99 TL",
-    },
-    {
-      image: "/images/kuyumcu3.webp",
-      title: "14 Ayar Altın Kaplama 100 Dilde Seni Seviyorum Kolye",
-      fiyat: "499.99 TL",
-    },
-    {
-      image: "/images/kuyumcu3.webp",
-      title: "14 Ayar Altın Kaplama 100 Dilde Seni Seviyorum Kolye",
-      fiyat: "499.99 TL",
-    },
-  ];
-
+// UrunListesi Bileşeni: Ürün kartlarını listeler, dışarıdan urunler prop'u alacak şekilde güncellendi
+function UrunListesi({ urunler }) { // urunler prop'u eklendi
   return (
     <div className="urun-listesi grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
       {urunler.map((urun, i) => (
@@ -130,6 +110,7 @@ function UrunListesi() {
   );
 }
 
+// Footer Bileşeni
 function Footer() {
   return (
     <footer className="footer bg-gray-100 p-6 mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
@@ -139,7 +120,7 @@ function Footer() {
       </div>
       <div className="footer-section">
         <label className="font-bold">İletişim</label>
-        <a href="#">contact@bonjuteri.com</a>
+        <Link to="/iletisim">contact@bonjuteri.com</Link>
       </div>
       <div className="footer-section">
         <label className="font-bold">Sosyal Medya</label>
@@ -158,13 +139,44 @@ function Footer() {
   );
 }
 
+// Ana App Bileşeni
 function App() {
+  // Anasayfada gösterilecek ürünler (örneğin ilk 4 ürün)
+  const anasayfaUrunleri = [
+    { image: "/images/kuyumcu1.webp", title: "14 Ayar Altın Kaplama Gökyüzü Kolye", fiyat: "499.99 TL" },
+    { image: "/images/kuyumcu2.webp", title: "14 Ayar Altın Kaplama İtalyan İnci Kalp Kolye", fiyat: "499.99 TL" },
+    { image: "/images/kuyumcu3.webp", title: "14 Ayar Altın Kaplama 100 Dilde Seni Seviyorum Kolye", fiyat: "499.99 TL" },
+    { image: "/images/kuyumcu3.webp", title: "14 Ayar Altın Kaplama 100 Dilde Seni Seviyorum Kolye", fiyat: "499.99 TL" },
+  ];
+
   return (
     <>
       <Navbar />
       <hr />
-      <UrunListesi />
-      <UrunListesi />
+
+      <Routes>
+        {/* Anasayfa yolu: Anasayfa için özel ürün listesi */}
+        <Route path="/" element={
+          <div style={{ padding: '20px', maxWidth: '1200px', margin: 'auto', textAlign: 'center' }}>
+            <h2>Ana Sayfa Ürünleri</h2>
+            <UrunListesi urunler={anasayfaUrunleri} /> {/* Anasayfa ürünlerini UrunListesi'ne gönderiyoruz */}
+          </div>
+        } />
+
+        {/* Tüm Ürünler yolu: /urunler URL'sine gidildiğinde Products bileşenini gösterir (8 ürün) */}
+        <Route path="/urunler" element={<Products />} />
+
+        {/* Hakkımızda yolu */}
+        <Route path="/hakkimizda" element={<AboutUs />} />
+
+        {/* İletişim yolu */}
+        <Route path="/iletisim" element={<Contact />} />
+
+        {/* Ürün Detay Sayfası için örnek rota (isteğe bağlı) */}
+        {/* <Route path="/urunler/:urunAdi" element={<UrunDetay />} /> */}
+
+      </Routes>
+
       <hr />
       <Footer />
     </>

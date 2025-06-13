@@ -1,56 +1,41 @@
 import React from 'react';
-import './index.css'; // Opsiyonel: Stil için ayrı CSS dosyası
 
-function Navbar() {
-  return (
-    <header className="navbar">
-      <h1 className="logo">Bonjuteri</h1>
-      <nav className="menu">
-        <a href="#">Anasayfa</a>
-        <a href="#">Tüm Ürünler</a>
-        <a href="#">Hakkımızda</a>
-        <a href="#">İletişim</a>
-      </nav>
-    </header>
-  );
-}
-
+// Contact bileşeni TEK BİR KEZ tanımlanmalı
 function Contact() {
   return (
+    <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
+      <h1>İletişim</h1>
+      <p>Sorularınız, geri bildirimleriniz veya özel siparişleriniz için bizimle iletişime geçmekten çekinmeyin. Ekibimiz en kısa sürede size geri dönecektir.</p>
 
-    <div className="contact-page">
-      <h2>Bize Ulaşın</h2>
-      <p>Her türlü soru, öneri ve geri bildiriminiz için bizimle iletişime geçebilirsiniz.</p>
+      <h2>İletişim Bilgileri</h2>
+      <p>
+        <strong>E-posta:</strong> info@bonjuteri.com <br />
+        <strong>Telefon:</strong> +90 531 491 59 35 (Çalışma saatleri içinde) <br />
+        <strong>Adres:</strong> ali ihsan türkkan Cad. No:123, Alibey Mah., Silivri, İstanbul, Türkiye
+      </p>
 
-      <div className="contact-info">
-        <h3>İletişim Bilgileri</h3>
-        <p><strong>E-posta:</strong> contact@bonjuteri.com</p>
-        <p><strong>Telefon:</strong> +90 555 123 45 67</p>
-        <p><strong>Adres:</strong> Örnek Mahallesi, Örnek Caddesi, No: 123, Bonjuteri Merkezi, İstanbul</p>
-      </div>
-
-      <div className="contact-form">
-        <h3>Mesaj Gönderin</h3>
-        <form>
-          <div className="form-group">
-            <label htmlFor="name">Adınız:</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">E-posta Adresiniz:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Mesajınız:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit">Gönder</button>
-        </form>
-      </div>
+      <h2>İletişim Formu</h2>
+      <form style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        <div>
+          <label htmlFor="name" style={{ display: 'block', marginBottom: '5px' }}>Adınız Soyadınız:</label>
+          <input type="text" id="name" name="name" required style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
+        </div>
+        <div>
+          <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>E-posta Adresiniz:</label>
+          <input type="email" id="email" name="email" required style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
+        </div>
+        <div>
+          <label htmlFor="subject" style={{ display: 'block', marginBottom: '5px' }}>Konu:</label>
+          <input type="text" id="subject" name="subject" style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
+        </div>
+        <div>
+          <label htmlFor="message" style={{ display: 'block', marginBottom: '5px' }}>Mesajınız:</label>
+          <textarea id="message" name="message" rows="5" required style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}></textarea>
+        </div>
+        <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Gönder</button>
+      </form>
     </div>
   );
 }
 
-bonjuterireact/src/App.jsx
-
-export default Contact;
+export default Contact; // Bileşeni dışa aktarmayı unutmayın
